@@ -1,19 +1,20 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace LogicaDeNegocios.users
+namespace ServiciosWCF.Servicios.users
 {
-    public partial class LogicaDeNegocios_SignalDB : users.IUsersLogicaDeNegocios
+    public partial class ServiceWCF_SignakDB : IUsersService
     {
-        Dominio.Querys.users.IUsersQuery usersQuerys = new Dominio.Querys.Querys();
+        LogicaDeNegocios.users.IUsersLogicaDeNegocios UsersLogicaNegocio = new LogicaDeNegocios.users.LogicaDeNegocios_SignalDB();
+
+              
         public string InsertarUsers(Dominio.Dtos.usersDTO dto)
         {
             try
             {
-                return usersQuerys.InsertarUsers(dto);
+                return UsersLogicaNegocio.InsertarUsers(dto);
             }
             catch (Exception)
             {
@@ -25,7 +26,7 @@ namespace LogicaDeNegocios.users
         {
             try
             {
-                return usersQuerys.ActualizarUsers(dto);
+                return UsersLogicaNegocio.ActualizarUsers (dto);
             }
             catch (Exception)
             {
@@ -37,7 +38,7 @@ namespace LogicaDeNegocios.users
         {
             try
             {
-                return usersQuerys.EliminarUsers(id);
+                return UsersLogicaNegocio.EliminarUsers (id);
             }
             catch (Exception)
             {
@@ -49,7 +50,7 @@ namespace LogicaDeNegocios.users
         {
             try
             {
-                return usersQuerys.BuscarUsers(id);
+                return UsersLogicaNegocio.BuscarUsers (id);
             }
             catch (Exception)
             {
@@ -61,7 +62,7 @@ namespace LogicaDeNegocios.users
         {
             try
             {
-                return usersQuerys.ListarAlumnos(param);
+                return UsersLogicaNegocio.ListarUsers (param);
             }
             catch (Exception)
             {
