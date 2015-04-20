@@ -96,5 +96,12 @@ namespace Dominio.Convertidores
             return entities.Select(e => e.ToDTO()).ToList();
         }
 
+        public static void Actualizar(Dominio.Dtos.acts_filesDTO  dto, PersistenciaDatos.acts_files  entity)
+        {
+            entity.id_acts_files = dto.id_acts_files;
+            entity.id_act = dto.id_act;
+            entity.id_file = dto.id_file;
+        }
+
     }
 }
