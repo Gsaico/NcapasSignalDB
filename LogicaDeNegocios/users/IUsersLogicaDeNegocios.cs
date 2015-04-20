@@ -14,5 +14,6 @@ namespace LogicaDeNegocios.users
         bool EliminarUsers(string id);
         Dominio.Dtos.usersDTO BuscarUsers(string id);
         List<Dominio.Dtos.usersDTO> ListarUsers(string param);
+        List<Dominio.Dtos.usersDTO> ListarTodosLosUsers();
     }
 }

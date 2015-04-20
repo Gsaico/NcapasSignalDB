@@ -20,5 +20,7 @@ namespace ServiciosWCF.Servicios.users
         Dominio.Dtos.usersDTO BuscarUsers(string id);
         [OperationContract]
         List<Dominio.Dtos.usersDTO> ListarUsers(string param);
+        [OperationContract]
+        List<Dominio.Dtos.usersDTO> ListarTodosLosUsers();
     }
 }

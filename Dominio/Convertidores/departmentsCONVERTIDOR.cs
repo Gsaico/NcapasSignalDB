@@ -95,6 +95,13 @@ namespace Dominio.Convertidores
 
             return entities.Select(e => e.ToDTO()).ToList();
         }
+        public static void Actualizar(Dominio.Dtos.departmentsDTO dto, PersistenciaDatos.departments entity)
+        {
+            entity.id_department = dto.id_department;
+            entity.name = dto.name;
+            entity.description = dto.description;
+
+        }
 
     }
 }

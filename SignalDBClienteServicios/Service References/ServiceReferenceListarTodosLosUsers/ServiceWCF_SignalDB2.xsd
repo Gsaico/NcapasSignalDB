@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3544/ServiceWCF_SignalDB.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="usersDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="create_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="date_of_birth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="departments_id_department" type="xs:int" />
+      <xs:element minOccurs="0" name="fullname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id_department" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="id_user" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="last_acces_datex" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="messages1_id_message" nillable="true" type="q1:ArrayOfint" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="messages_id_message" nillable="true" type="q2:ArrayOfint" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="profession" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="role" type="xs:int" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="users_acts_id_user_act" nillable="true" type="q3:ArrayOfint" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="users_workgroups_id_users_workgroups" nillable="true" type="q4:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="usersDTO" nillable="true" type="tns:usersDTO" />
+  <xs:complexType name="ArrayOfusersDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="usersDTO" nillable="true" type="tns:usersDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfusersDTO" nillable="true" type="tns:ArrayOfusersDTO" />
+</xs:schema>

@@ -12,6 +12,7 @@ namespace Dominio.Querys.users
         bool ActualizarUsers(Dtos.usersDTO dto);
         bool EliminarUsers(string id);
         Dtos.usersDTO  BuscarUsers(string id);
-        List<Dtos.usersDTO> ListarAlumnos(string param);
+        List<Dtos.usersDTO> ListarUsers(string param);
+        List<Dtos.usersDTO> ListarTodosLosUsers();
     }
 }

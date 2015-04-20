@@ -99,6 +99,13 @@ namespace Dominio.Convertidores
 
             return entities.Select(e => e.ToDTO()).ToList();
         }
-
+        public static void Actualizar(Dominio.Dtos.workgroupsDTO dto, PersistenciaDatos.workgroups  entity)
+        {
+            entity.id_workgroup = dto.id_workgroup;
+            entity.name_workgroup = dto.name_workgroup;
+            entity.create_date = dto.create_date;
+            entity.status = dto.status;
+            entity.description = dto.description;
+        }
     }
 }

@@ -16,5 +16,14 @@ namespace SignalDBClienteServicios
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ServiceReferenceListarTodosLosUsers.UsersServiceClient client = new ServiceReferenceListarTodosLosUsers.UsersServiceClient();
+
+         
+            dataGridView1.DataSource = client.ListarTodosLosUsers();
+ 
+        }
     }
 }

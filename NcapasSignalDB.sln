@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosWCF", "ServiciosWCF\ServiciosWCF.csproj", "{E8A0F7A2-CC7B-4674-9671-9DDC757D2E16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalDBClienteServicios", "SignalDBClienteServicios\SignalDBClienteServicios.csproj", "{936B2A31-957F-4EFC-845B-68311CAEEC9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E8A0F7A2-CC7B-4674-9671-9DDC757D2E16} = {E8A0F7A2-CC7B-4674-9671-9DDC757D2E16}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -109,6 +109,20 @@ namespace Dominio.Convertidores
 
             return entities.Select(e => e.ToDTO()).ToList();
         }
+        public static void Actualizar(Dominio.Dtos.messagesDTO dto, PersistenciaDatos.messages entity)
+        {
+            entity.id_message = dto.id_message;
+            entity.from_user_id = dto.from_user_id;
+            entity.to_user_id = dto.to_user_id;
+            entity.subject = dto.subject;
+            entity.contentx = dto.contentx;
+            entity.create_date = dto.create_date;
+            entity.unread = dto.unread;
+            entity.status = dto.status;
+            entity.id_workgroup = dto.id_workgroup;
+            entity.id_act = dto.id_act;
+
+        }
 
     }
 }

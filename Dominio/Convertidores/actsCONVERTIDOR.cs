@@ -103,6 +103,17 @@ namespace Dominio.Convertidores
 
             return entities.Select(e => e.ToDTO()).ToList();
         }
+        public static void Actualizar(Dominio.Dtos.actsDTO dto, PersistenciaDatos.acts entity)
+        {
+            entity.id_act = dto.id_act;
+            entity.name_act = dto.name_act;
+            entity.create_date = dto.create_date;
+            entity.status = dto.status;
+            entity.description_small = dto.description_small;
+            entity.description_large = dto.description_large;
+            entity.id_user_create = dto.id_user_create;
+
+        }
 
     }
 }

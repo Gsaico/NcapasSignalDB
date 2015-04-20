@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio.Convertidores;
 //add
 using Dominio.Convertidores; 
 
 namespace Dominio.Querys
 {
-    public partial class Querys : users.IUsersQuery
+    public partial class Querys : workgroups.IWorkgroupsQuery 
     {
-
-        public string InsertarUsers(Dtos.usersDTO dto)
+        public int InsertarWorkgroups(Dtos.workgroupsDTO dto)
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
                     var entity = dto.ToEntity();
-                    modelo.users.Add(entity);
+                    modelo.workgroups.Add(entity);
                     modelo.SaveChanges();
-                    return entity.id_user;
+                    return entity.id_workgroup ;
                 }
             }
             catch (Exception)
@@ -30,15 +28,15 @@ namespace Dominio.Querys
             }
         }
 
-        public bool ActualizarUsers(Dtos.usersDTO dto)
+        public bool ActualizarWorkgroups(Dtos.workgroupsDTO dto)
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
-                    var w = modelo.users.Where(q => q.id_user  == dto.id_user ).Select(q => q).FirstOrDefault();
+                    var w = modelo.workgroups.Where(q => q.id_workgroup  == dto.id_workgroup ).Select(q => q).FirstOrDefault();
                     if (w == null) return false;
-                    Dominio.Convertidores.usersCONVERTIDOR.Actualizar(dto, w);
+                    Dominio.Convertidores.workgroupsCONVERTIDOR .Actualizar(dto, w);
                     modelo.SaveChanges();
                     return true;
                 }
@@ -49,15 +47,15 @@ namespace Dominio.Querys
             }
         }
 
-        public bool EliminarUsers(string id)
+        public bool EliminarWorkgroups(int id)
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
-                    PersistenciaDatos.users  x = modelo.users.Where(q => q.id_user  == id).Select(q => q).FirstOrDefault();
+                    PersistenciaDatos.workgroups x = modelo.workgroups.Where(q => q.id_workgroup  == id).Select(q => q).FirstOrDefault();
                     if (x == null) return false;
-                    modelo.users.Remove(x);
+                    modelo.workgroups.Remove(x);
                     modelo.SaveChanges();
                     return true;
                 }
@@ -68,15 +66,15 @@ namespace Dominio.Querys
             }
         }
 
-        public Dtos.usersDTO BuscarUsers(string id)
+        public Dtos.workgroupsDTO BuscarWorkgroups(int id)
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
-                    var entity = modelo.users.Where(q => q.id_user  == id).Select(q => q).FirstOrDefault();
+                    var entity = modelo.workgroups.Where(q => q.id_workgroup  == id).Select(q => q).FirstOrDefault();
                     if (entity == null) return null;
-                    return Dominio.Convertidores.usersCONVERTIDOR.ToDTO(entity);
+                    return Dominio.Convertidores.workgroupsCONVERTIDOR .ToDTO(entity);
                 }
             }
             catch (Exception)
@@ -85,15 +83,15 @@ namespace Dominio.Querys
             };
         }
 
-        public List<Dtos.usersDTO> ListarUsers(string param)
+        public List<Dtos.workgroupsDTO> ListarWorkgroups(string param)
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
-                    var entity = modelo.users.Where(q => q.fullname .Contains(param)).Select(q => q).ToList();
+                    var entity = modelo.workgroups .Where(q => q.name_workgroup.Contains(param)).Select(q => q).ToList();
                     if (entity == null) return null;
-                    return Dominio.Convertidores.usersCONVERTIDOR .ToDTOs(entity);
+                    return Dominio.Convertidores.workgroupsCONVERTIDOR .ToDTOs(entity);
                 }
             }
             catch (Exception)
@@ -102,16 +100,15 @@ namespace Dominio.Querys
             }
         }
 
-
-        public List<Dtos.usersDTO> ListarTodosLosUsers()
+        public List<Dtos.workgroupsDTO> ListarTodosLosWorkgroup_Activos()
         {
             try
             {
                 using (var modelo = new PersistenciaDatos.SignalDBEntities())
                 {
-                    var entity = modelo.users.ToList();
+                    var entity = modelo.workgroups.Where(q => q.status == 1).Select(q => q).ToList();
                     if (entity == null) return null;
-                    return Dominio.Convertidores.usersCONVERTIDOR.ToDTOs(entity);
+                    return Dominio.Convertidores.workgroupsCONVERTIDOR .ToDTOs(entity);
                 }
             }
             catch (Exception)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogicaDeNegocios.users
+namespace LogicaDeNegocios
 {
     public partial class LogicaDeNegocios_SignalDB : users.IUsersLogicaDeNegocios
     {
@@ -61,7 +61,20 @@ namespace LogicaDeNegocios.users
         {
             try
             {
-                return usersQuerys.ListarAlumnos(param);
+                return usersQuerys.ListarUsers(param);
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public List<Dominio.Dtos.usersDTO> ListarTodosLosUsers()
+        {
+            try
+            {
+                return usersQuerys.ListarTodosLosUsers();
             }
             catch (Exception)
             {

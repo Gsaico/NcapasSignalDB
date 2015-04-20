@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio.Convertidores;
 using System.Data.Entity;
+//add
+using Dominio.Convertidores; 
 
 namespace Dominio.Querys
 {

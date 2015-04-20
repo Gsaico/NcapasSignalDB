@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ServiciosWCF.Servicios.users
+namespace ServiciosWCF
 {
-    public partial class ServiceWCF_SignakDB : IUsersService
+    public partial class ServiceWCF_SignalDB : Servicios.users.IUsersService
     {
-        LogicaDeNegocios.users.IUsersLogicaDeNegocios UsersLogicaNegocio = new LogicaDeNegocios.users.LogicaDeNegocios_SignalDB();
+        LogicaDeNegocios.users.IUsersLogicaDeNegocios UsersLogicaNegocio = new LogicaDeNegocios.LogicaDeNegocios_SignalDB();
 
               
         public string InsertarUsers(Dominio.Dtos.usersDTO dto)
@@ -63,6 +63,19 @@ namespace ServiciosWCF.Servicios.users
             try
             {
                 return UsersLogicaNegocio.ListarUsers (param);
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public List<Dominio.Dtos.usersDTO> ListarTodosLosUsers()
+        {
+            try
+            {
+                return UsersLogicaNegocio.ListarTodosLosUsers();
             }
             catch (Exception)
             {

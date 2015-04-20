@@ -67,11 +67,29 @@
     <Compile Include="Dtos\users_workgroupsDTO.cs" />
     <Compile Include="Dtos\workgroupsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Querys\acts\ActsQuery.cs" />
+    <Compile Include="Querys\acts\IActsQuery.cs" />
     <Compile Include="Querys\acts_files\Acts_filesQuery.cs" />
     <Compile Include="Querys\acts_files\IActs_filesQuery.cs" />
+    <Compile Include="Querys\agreements\AgreementsQuery.cs" />
+    <Compile Include="Querys\agreements\IAgreementsQuery.cs" />
+    <Compile Include="Querys\departments\DepartmentsQuery.cs" />
+    <Compile Include="Querys\departments\IDepartmentsQuery.cs" />
+    <Compile Include="Querys\files\FilesQuery.cs" />
+    <Compile Include="Querys\files\IFilesQuery.cs" />
+    <Compile Include="Querys\messages\IMessagesQuery.cs" />
+    <Compile Include="Querys\messages\MessagesQuery.cs" />
+    <Compile Include="Querys\messages_files\IMessages_filesQuery.cs" />
+    <Compile Include="Querys\messages_files\Messages_filesQuery.cs" />
     <Compile Include="Querys\Querys.cs" />
     <Compile Include="Querys\users\IUsersQuery.cs" />
     <Compile Include="Querys\users\UsersQuery.cs" />
+    <Compile Include="Querys\users_acts\IUsers_actsQuery.cs" />
+    <Compile Include="Querys\users_acts\Users_actsQuery.cs" />
+    <Compile Include="Querys\users_workgroups\IUsers_workgroupsQuery.cs" />
+    <Compile Include="Querys\users_workgroups\Users_workgroupsQuery.cs" />
+    <Compile Include="Querys\workgroups\IWorkgroupsQuery.cs" />
+    <Compile Include="Querys\workgroups\WorkgroupsQuery.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

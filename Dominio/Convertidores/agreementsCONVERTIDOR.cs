@@ -97,6 +97,13 @@ namespace Dominio.Convertidores
 
             return entities.Select(e => e.ToDTO()).ToList();
         }
+        public static void Actualizar(Dominio.Dtos.agreementsDTO dto, PersistenciaDatos.agreements entity)
+        {
+            entity.id_act = dto.id_act;
+            entity.name = dto.name;
+            entity.description = dto.description;
+            entity.id_user_responsible = dto.id_user_responsible;
 
+        }
     }
 }
