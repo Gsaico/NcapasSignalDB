@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Dominio.Convertidores;
 using System.Data.Entity;
 
-namespace Dominio.Querys.acts_files
+namespace Dominio.Querys
 {
-    public partial class Acts_filesQuery : acts_files.IActs_filesQuery  
+    public partial class Querys: acts_files.IActs_filesQuery  
     {
 
         public bool InsertarActs_files(Dtos.acts_filesDTO dto)
