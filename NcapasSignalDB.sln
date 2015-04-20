@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{3EA5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servidor", "Servidor", "{904686E2-6CAE-4BA6-A5DA-600227F29C07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaDeNegocios", "LogicaDeNegocios\LogicaDeNegocios.csproj", "{6D2C4030-FD1B-472C-B7A5-118E3E03682A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D2C4030-FD1B-472C-B7A5-118E3E03682A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2C4030-FD1B-472C-B7A5-118E3E03682A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2C4030-FD1B-472C-B7A5-118E3E03682A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2C4030-FD1B-472C-B7A5-118E3E03682A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1} = {904686E2-6CAE-4BA6-A5DA-600227F29C07}
 		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F} = {904686E2-6CAE-4BA6-A5DA-600227F29C07}
+		{6D2C4030-FD1B-472C-B7A5-118E3E03682A} = {904686E2-6CAE-4BA6-A5DA-600227F29C07}
 	EndGlobalSection
 EndGlobal
