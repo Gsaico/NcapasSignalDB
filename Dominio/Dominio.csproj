@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dominio</RootNamespace>
+    <AssemblyName>Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\PersistensiaDatos\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Convertidores\actsCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\acts_filesCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\agreementsCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\departmentsCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\filesCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\messagesCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\messages_filesCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\usersCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\users_actsCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\users_workgroupsCONVERTIDOR.cs" />
+    <Compile Include="Convertidores\workgroupsCONVERTIDOR.cs" />
+    <Compile Include="Dtos\actsDTO.cs" />
+    <Compile Include="Dtos\acts_filesDTO.cs" />
+    <Compile Include="Dtos\agreementsDTO.cs" />
+    <Compile Include="Dtos\departmentsDTO.cs" />
+    <Compile Include="Dtos\filesDTO.cs" />
+    <Compile Include="Dtos\messagesDTO.cs" />
+    <Compile Include="Dtos\messages_filesDTO.cs" />
+    <Compile Include="Dtos\usersDTO.cs" />
+    <Compile Include="Dtos\users_actsDTO.cs" />
+    <Compile Include="Dtos\users_workgroupsDTO.cs" />
+    <Compile Include="Dtos\workgroupsDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Querys\acts_files\Acts_filesQuery.cs" />
+    <Compile Include="Querys\acts_files\IActs_filesQuery.cs" />
+    <Compile Include="Querys\Querys.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PersistensiaDatos\PersistenciaDatos.csproj">
+      <Project>{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}</Project>
+      <Name>PersistenciaDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

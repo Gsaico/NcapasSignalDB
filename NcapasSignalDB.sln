@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenciaDatos", "PersistensiaDatos\PersistenciaDatos.csproj", "{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{3EA5C44E-BE66-447E-8C20-7FFEF58D0A47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servidor", "Servidor", "{904686E2-6CAE-4BA6-A5DA-600227F29C07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED00CC9F-75F8-4C97-BF14-F4334530ACD1} = {904686E2-6CAE-4BA6-A5DA-600227F29C07}
+		{F8D1AF8E-539A-4976-8C4F-BDFABAAC0B3F} = {904686E2-6CAE-4BA6-A5DA-600227F29C07}
+	EndGlobalSection
+EndGlobal

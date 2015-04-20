@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SignalDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SignalDBModelStoreContainer">
+          <EntitySet Name="acts" EntityType="SignalDBModel.Store.acts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="acts_files" EntityType="SignalDBModel.Store.acts_files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="agreements" EntityType="SignalDBModel.Store.agreements" store:Type="Tables" store:Schema="dbo" store:Name="agreements">
+            <DefiningQuery>SELECT 
+      [agreements].[id_act] AS [id_act], 
+      [agreements].[name] AS [name], 
+      [agreements].[description] AS [description], 
+      [agreements].[id_user_responsible] AS [id_user_responsible]
+      FROM [dbo].[agreements] AS [agreements]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="departments" EntityType="SignalDBModel.Store.departments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="files" EntityType="SignalDBModel.Store.files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="messages" EntityType="SignalDBModel.Store.messages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="messages_files" EntityType="SignalDBModel.Store.messages_files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="SignalDBModel.Store.users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users_acts" EntityType="SignalDBModel.Store.users_acts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users_workgroups" EntityType="SignalDBModel.Store.users_workgroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="workgroups" EntityType="SignalDBModel.Store.workgroups" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_acts_files_acts" Association="SignalDBModel.Store.FK_acts_files_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="acts_files" EntitySet="acts_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acts_files_files" Association="SignalDBModel.Store.FK_acts_files_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="acts_files" EntitySet="acts_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agreements_acts" Association="SignalDBModel.Store.FK_agreements_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="agreements" EntitySet="agreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_acts" Association="SignalDBModel.Store.FK_messages_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_files_files" Association="SignalDBModel.Store.FK_messages_files_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="messages_files" EntitySet="messages_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_files_messages" Association="SignalDBModel.Store.FK_messages_files_messages">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="messages_files" EntitySet="messages_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_users" Association="SignalDBModel.Store.FK_messages_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_users1" Association="SignalDBModel.Store.FK_messages_users1">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_workgroups" Association="SignalDBModel.Store.FK_messages_workgroups">
+            <End Role="workgroups" EntitySet="workgroups" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_acts_acts" Association="SignalDBModel.Store.FK_users_acts_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="users_acts" EntitySet="users_acts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_acts_users" Association="SignalDBModel.Store.FK_users_acts_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="users_acts" EntitySet="users_acts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_departments" Association="SignalDBModel.Store.FK_users_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_workgroups_users" Association="SignalDBModel.Store.FK_users_workgroups_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="users_workgroups" EntitySet="users_workgroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_workgroups_workgroups" Association="SignalDBModel.Store.FK_users_workgroups_workgroups">
+            <End Role="workgroups" EntitySet="workgroups" />
+            <End Role="users_workgroups" EntitySet="users_workgroups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="acts">
+          <Key>
+            <PropertyRef Name="id_act" />
+          </Key>
+          <Property Name="id_act" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_act" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="description_small" Type="varchar" MaxLength="100" />
+          <Property Name="description_large" Type="varchar(max)" />
+          <Property Name="id_user_create" Type="char" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="acts_files">
+          <Key>
+            <PropertyRef Name="id_acts_files" />
+          </Key>
+          <Property Name="id_acts_files" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_act" Type="int" Nullable="false" />
+          <Property Name="id_file" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SignalDB.dbo.agreements' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="agreements">
+          <Key>
+            <PropertyRef Name="id_act" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id_act" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="800" />
+          <Property Name="id_user_responsible" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="id_department" />
+          </Key>
+          <Property Name="id_department" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="files">
+          <Key>
+            <PropertyRef Name="id_file" />
+          </Key>
+          <Property Name="id_file" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_file" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="adjunt_date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="type" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="address" Type="varchar" Nullable="false" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id_message" />
+          </Key>
+          <Property Name="id_message" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="from_user_id" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="to_user_id" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="subject" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="contentx" Type="varchar(max)" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="unread" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="id_workgroup" Type="int" />
+          <Property Name="id_act" Type="int" />
+        </EntityType>
+        <EntityType Name="messages_files">
+          <Key>
+            <PropertyRef Name="id_messages_files" />
+          </Key>
+          <Property Name="id_messages_files" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_message" Type="int" Nullable="false" />
+          <Property Name="id_file" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="fullname" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="last_acces_datex" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="mail" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="date_of_birth" Type="datetime" Nullable="false" />
+          <Property Name="profession" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="id_department" Type="int" />
+          <Property Name="role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users_acts">
+          <Key>
+            <PropertyRef Name="id_user_act" />
+          </Key>
+          <Property Name="id_user_act" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_act" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="char" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="users_workgroups">
+          <Key>
+            <PropertyRef Name="id_users_workgroups" />
+          </Key>
+          <Property Name="id_users_workgroups" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_workgroup" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="char" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="workgroups">
+          <Key>
+            <PropertyRef Name="id_workgroup" />
+          </Key>
+          <Property Name="id_workgroup" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_workgroup" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_acts_files_acts">
+          <End Role="acts" Type="SignalDBModel.Store.acts" Multiplicity="1" />
+          <End Role="acts_files" Type="SignalDBModel.Store.acts_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="acts_files">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acts_files_files">
+          <End Role="files" Type="SignalDBModel.Store.files" Multiplicity="1" />
+          <End Role="acts_files" Type="SignalDBModel.Store.acts_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id_file" />
+            </Principal>
+            <Dependent Role="acts_files">
+              <PropertyRef Name="id_file" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agreements_acts">
+          <End Role="acts" Type="SignalDBModel.Store.acts" Multiplicity="1" />
+          <End Role="agreements" Type="SignalDBModel.Store.agreements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="agreements">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_acts">
+          <End Role="acts" Type="SignalDBModel.Store.acts" Multiplicity="0..1" />
+          <End Role="messages" Type="SignalDBModel.Store.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_files_files">
+          <End Role="files" Type="SignalDBModel.Store.files" Multiplicity="1" />
+          <End Role="messages_files" Type="SignalDBModel.Store.messages_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id_file" />
+            </Principal>
+            <Dependent Role="messages_files">
+              <PropertyRef Name="id_file" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_files_messages">
+          <End Role="messages" Type="SignalDBModel.Store.messages" Multiplicity="1" />
+          <End Role="messages_files" Type="SignalDBModel.Store.messages_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="messages">
+              <PropertyRef Name="id_message" />
+            </Principal>
+            <Dependent Role="messages_files">
+              <PropertyRef Name="id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_users">
+          <End Role="users" Type="SignalDBModel.Store.users" Multiplicity="1" />
+          <End Role="messages" Type="SignalDBModel.Store.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="from_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_users1">
+          <End Role="users" Type="SignalDBModel.Store.users" Multiplicity="1" />
+          <End Role="messages" Type="SignalDBModel.Store.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="to_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_workgroups">
+          <End Role="workgroups" Type="SignalDBModel.Store.workgroups" Multiplicity="0..1" />
+          <End Role="messages" Type="SignalDBModel.Store.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_workgroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_acts_acts">
+          <End Role="acts" Type="SignalDBModel.Store.acts" Multiplicity="1" />
+          <End Role="users_acts" Type="SignalDBModel.Store.users_acts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="users_acts">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_acts_users">
+          <End Role="users" Type="SignalDBModel.Store.users" Multiplicity="1" />
+          <End Role="users_acts" Type="SignalDBModel.Store.users_acts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="users_acts">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_departments">
+          <End Role="departments" Type="SignalDBModel.Store.departments" Multiplicity="0..1" />
+          <End Role="users" Type="SignalDBModel.Store.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="id_department" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_workgroups_users">
+          <End Role="users" Type="SignalDBModel.Store.users" Multiplicity="1" />
+          <End Role="users_workgroups" Type="SignalDBModel.Store.users_workgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="users_workgroups">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_workgroups_workgroups">
+          <End Role="workgroups" Type="SignalDBModel.Store.workgroups" Multiplicity="1" />
+          <End Role="users_workgroups" Type="SignalDBModel.Store.users_workgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Principal>
+            <Dependent Role="users_workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SignalDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SignalDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="acts" EntityType="SignalDBModel.acts" />
+          <EntitySet Name="acts_files" EntityType="SignalDBModel.acts_files" />
+          <EntitySet Name="agreements" EntityType="SignalDBModel.agreements" />
+          <EntitySet Name="departments" EntityType="SignalDBModel.departments" />
+          <EntitySet Name="files" EntityType="SignalDBModel.files" />
+          <EntitySet Name="messages" EntityType="SignalDBModel.messages" />
+          <EntitySet Name="messages_files" EntityType="SignalDBModel.messages_files" />
+          <EntitySet Name="users" EntityType="SignalDBModel.users" />
+          <EntitySet Name="users_acts" EntityType="SignalDBModel.users_acts" />
+          <EntitySet Name="users_workgroups" EntityType="SignalDBModel.users_workgroups" />
+          <EntitySet Name="workgroups" EntityType="SignalDBModel.workgroups" />
+          <AssociationSet Name="FK_acts_files_acts" Association="SignalDBModel.FK_acts_files_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="acts_files" EntitySet="acts_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agreements_acts" Association="SignalDBModel.FK_agreements_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="agreements" EntitySet="agreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_acts" Association="SignalDBModel.FK_messages_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_acts_acts" Association="SignalDBModel.FK_users_acts_acts">
+            <End Role="acts" EntitySet="acts" />
+            <End Role="users_acts" EntitySet="users_acts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acts_files_files" Association="SignalDBModel.FK_acts_files_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="acts_files" EntitySet="acts_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_departments" Association="SignalDBModel.FK_users_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_files_files" Association="SignalDBModel.FK_messages_files_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="messages_files" EntitySet="messages_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_files_messages" Association="SignalDBModel.FK_messages_files_messages">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="messages_files" EntitySet="messages_files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_users" Association="SignalDBModel.FK_messages_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_users1" Association="SignalDBModel.FK_messages_users1">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_workgroups" Association="SignalDBModel.FK_messages_workgroups">
+            <End Role="workgroups" EntitySet="workgroups" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_acts_users" Association="SignalDBModel.FK_users_acts_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="users_acts" EntitySet="users_acts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_workgroups_users" Association="SignalDBModel.FK_users_workgroups_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="users_workgroups" EntitySet="users_workgroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_workgroups_workgroups" Association="SignalDBModel.FK_users_workgroups_workgroups">
+            <End Role="workgroups" EntitySet="workgroups" />
+            <End Role="users_workgroups" EntitySet="users_workgroups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="acts">
+          <Key>
+            <PropertyRef Name="id_act" />
+          </Key>
+          <Property Name="id_act" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name_act" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="description_small" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description_large" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="id_user_create" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="acts_files" Relationship="SignalDBModel.FK_acts_files_acts" FromRole="acts" ToRole="acts_files" />
+          <NavigationProperty Name="agreements" Relationship="SignalDBModel.FK_agreements_acts" FromRole="acts" ToRole="agreements" />
+          <NavigationProperty Name="messages" Relationship="SignalDBModel.FK_messages_acts" FromRole="acts" ToRole="messages" />
+          <NavigationProperty Name="users_acts" Relationship="SignalDBModel.FK_users_acts_acts" FromRole="acts" ToRole="users_acts" />
+        </EntityType>
+        <EntityType Name="acts_files">
+          <Key>
+            <PropertyRef Name="id_acts_files" />
+          </Key>
+          <Property Name="id_acts_files" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_act" Type="Int32" Nullable="false" />
+          <Property Name="id_file" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="acts" Relationship="SignalDBModel.FK_acts_files_acts" FromRole="acts_files" ToRole="acts" />
+          <NavigationProperty Name="files" Relationship="SignalDBModel.FK_acts_files_files" FromRole="acts_files" ToRole="files" />
+        </EntityType>
+        <EntityType Name="agreements">
+          <Key>
+            <PropertyRef Name="id_act" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id_act" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="800" Unicode="false" FixedLength="false" />
+          <Property Name="id_user_responsible" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="acts" Relationship="SignalDBModel.FK_agreements_acts" FromRole="agreements" ToRole="acts" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="id_department" />
+          </Key>
+          <Property Name="id_department" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="users" Relationship="SignalDBModel.FK_users_departments" FromRole="departments" ToRole="users" />
+        </EntityType>
+        <EntityType Name="files">
+          <Key>
+            <PropertyRef Name="id_file" />
+          </Key>
+          <Property Name="id_file" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name_file" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="adjunt_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="800" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="acts_files" Relationship="SignalDBModel.FK_acts_files_files" FromRole="files" ToRole="acts_files" />
+          <NavigationProperty Name="messages_files" Relationship="SignalDBModel.FK_messages_files_files" FromRole="files" ToRole="messages_files" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id_message" />
+          </Key>
+          <Property Name="id_message" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="from_user_id" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="to_user_id" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="subject" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="contentx" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="unread" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_workgroup" Type="Int32" />
+          <Property Name="id_act" Type="Int32" />
+          <NavigationProperty Name="acts" Relationship="SignalDBModel.FK_messages_acts" FromRole="messages" ToRole="acts" />
+          <NavigationProperty Name="messages_files" Relationship="SignalDBModel.FK_messages_files_messages" FromRole="messages" ToRole="messages_files" />
+          <NavigationProperty Name="users" Relationship="SignalDBModel.FK_messages_users" FromRole="messages" ToRole="users" />
+          <NavigationProperty Name="users1" Relationship="SignalDBModel.FK_messages_users1" FromRole="messages" ToRole="users" />
+          <NavigationProperty Name="workgroups" Relationship="SignalDBModel.FK_messages_workgroups" FromRole="messages" ToRole="workgroups" />
+        </EntityType>
+        <EntityType Name="messages_files">
+          <Key>
+            <PropertyRef Name="id_messages_files" />
+          </Key>
+          <Property Name="id_messages_files" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_message" Type="Int32" Nullable="false" />
+          <Property Name="id_file" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="files" Relationship="SignalDBModel.FK_messages_files_files" FromRole="messages_files" ToRole="files" />
+          <NavigationProperty Name="messages" Relationship="SignalDBModel.FK_messages_files_messages" FromRole="messages_files" ToRole="messages" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="fullname" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_acces_datex" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="profession" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="id_department" Type="Int32" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="departments" Relationship="SignalDBModel.FK_users_departments" FromRole="users" ToRole="departments" />
+          <NavigationProperty Name="messages" Relationship="SignalDBModel.FK_messages_users" FromRole="users" ToRole="messages" />
+          <NavigationProperty Name="messages1" Relationship="SignalDBModel.FK_messages_users1" FromRole="users" ToRole="messages" />
+          <NavigationProperty Name="users_acts" Relationship="SignalDBModel.FK_users_acts_users" FromRole="users" ToRole="users_acts" />
+          <NavigationProperty Name="users_workgroups" Relationship="SignalDBModel.FK_users_workgroups_users" FromRole="users" ToRole="users_workgroups" />
+        </EntityType>
+        <EntityType Name="users_acts">
+          <Key>
+            <PropertyRef Name="id_user_act" />
+          </Key>
+          <Property Name="id_user_act" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_act" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="acts" Relationship="SignalDBModel.FK_users_acts_acts" FromRole="users_acts" ToRole="acts" />
+          <NavigationProperty Name="users" Relationship="SignalDBModel.FK_users_acts_users" FromRole="users_acts" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users_workgroups">
+          <Key>
+            <PropertyRef Name="id_users_workgroups" />
+          </Key>
+          <Property Name="id_users_workgroups" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_workgroup" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="users" Relationship="SignalDBModel.FK_users_workgroups_users" FromRole="users_workgroups" ToRole="users" />
+          <NavigationProperty Name="workgroups" Relationship="SignalDBModel.FK_users_workgroups_workgroups" FromRole="users_workgroups" ToRole="workgroups" />
+        </EntityType>
+        <EntityType Name="workgroups">
+          <Key>
+            <PropertyRef Name="id_workgroup" />
+          </Key>
+          <Property Name="id_workgroup" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name_workgroup" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="messages" Relationship="SignalDBModel.FK_messages_workgroups" FromRole="workgroups" ToRole="messages" />
+          <NavigationProperty Name="users_workgroups" Relationship="SignalDBModel.FK_users_workgroups_workgroups" FromRole="workgroups" ToRole="users_workgroups" />
+        </EntityType>
+        <Association Name="FK_acts_files_acts">
+          <End Role="acts" Type="SignalDBModel.acts" Multiplicity="1" />
+          <End Role="acts_files" Type="SignalDBModel.acts_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="acts_files">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agreements_acts">
+          <End Role="acts" Type="SignalDBModel.acts" Multiplicity="1" />
+          <End Role="agreements" Type="SignalDBModel.agreements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="agreements">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_acts">
+          <End Role="acts" Type="SignalDBModel.acts" Multiplicity="0..1" />
+          <End Role="messages" Type="SignalDBModel.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_acts_acts">
+          <End Role="acts" Type="SignalDBModel.acts" Multiplicity="1" />
+          <End Role="users_acts" Type="SignalDBModel.users_acts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acts">
+              <PropertyRef Name="id_act" />
+            </Principal>
+            <Dependent Role="users_acts">
+              <PropertyRef Name="id_act" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acts_files_files">
+          <End Role="files" Type="SignalDBModel.files" Multiplicity="1" />
+          <End Role="acts_files" Type="SignalDBModel.acts_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id_file" />
+            </Principal>
+            <Dependent Role="acts_files">
+              <PropertyRef Name="id_file" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_departments">
+          <End Role="departments" Type="SignalDBModel.departments" Multiplicity="0..1" />
+          <End Role="users" Type="SignalDBModel.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="id_department" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_files_files">
+          <End Role="files" Type="SignalDBModel.files" Multiplicity="1" />
+          <End Role="messages_files" Type="SignalDBModel.messages_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id_file" />
+            </Principal>
+            <Dependent Role="messages_files">
+              <PropertyRef Name="id_file" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_files_messages">
+          <End Role="messages" Type="SignalDBModel.messages" Multiplicity="1" />
+          <End Role="messages_files" Type="SignalDBModel.messages_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="messages">
+              <PropertyRef Name="id_message" />
+            </Principal>
+            <Dependent Role="messages_files">
+              <PropertyRef Name="id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_users">
+          <End Role="users" Type="SignalDBModel.users" Multiplicity="1" />
+          <End Role="messages" Type="SignalDBModel.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="from_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_users1">
+          <End Role="users" Type="SignalDBModel.users" Multiplicity="1" />
+          <End Role="messages" Type="SignalDBModel.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="to_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_workgroups">
+          <End Role="workgroups" Type="SignalDBModel.workgroups" Multiplicity="0..1" />
+          <End Role="messages" Type="SignalDBModel.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_workgroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_acts_users">
+          <End Role="users" Type="SignalDBModel.users" Multiplicity="1" />
+          <End Role="users_acts" Type="SignalDBModel.users_acts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="users_acts">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_workgroups_users">
+          <End Role="users" Type="SignalDBModel.users" Multiplicity="1" />
+          <End Role="users_workgroups" Type="SignalDBModel.users_workgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="users_workgroups">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_workgroups_workgroups">
+          <End Role="workgroups" Type="SignalDBModel.workgroups" Multiplicity="1" />
+          <End Role="users_workgroups" Type="SignalDBModel.users_workgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Principal>
+            <Dependent Role="users_workgroups">
+              <PropertyRef Name="id_workgroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SignalDBModelStoreContainer" CdmEntityContainer="SignalDBEntities">
+          <EntitySetMapping Name="acts">
+            <EntityTypeMapping TypeName="SignalDBModel.acts">
+              <MappingFragment StoreEntitySet="acts">
+                <ScalarProperty Name="id_act" ColumnName="id_act" />
+                <ScalarProperty Name="name_act" ColumnName="name_act" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description_small" ColumnName="description_small" />
+                <ScalarProperty Name="description_large" ColumnName="description_large" />
+                <ScalarProperty Name="id_user_create" ColumnName="id_user_create" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acts_files">
+            <EntityTypeMapping TypeName="SignalDBModel.acts_files">
+              <MappingFragment StoreEntitySet="acts_files">
+                <ScalarProperty Name="id_acts_files" ColumnName="id_acts_files" />
+                <ScalarProperty Name="id_act" ColumnName="id_act" />
+                <ScalarProperty Name="id_file" ColumnName="id_file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="agreements">
+            <EntityTypeMapping TypeName="SignalDBModel.agreements">
+              <MappingFragment StoreEntitySet="agreements">
+                <ScalarProperty Name="id_act" ColumnName="id_act" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id_user_responsible" ColumnName="id_user_responsible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="SignalDBModel.departments">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="id_department" ColumnName="id_department" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="files">
+            <EntityTypeMapping TypeName="SignalDBModel.files">
+              <MappingFragment StoreEntitySet="files">
+                <ScalarProperty Name="id_file" ColumnName="id_file" />
+                <ScalarProperty Name="name_file" ColumnName="name_file" />
+                <ScalarProperty Name="adjunt_date" ColumnName="adjunt_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="SignalDBModel.messages">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="id_message" ColumnName="id_message" />
+                <ScalarProperty Name="from_user_id" ColumnName="from_user_id" />
+                <ScalarProperty Name="to_user_id" ColumnName="to_user_id" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="contentx" ColumnName="contentx" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="unread" ColumnName="unread" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_workgroup" ColumnName="id_workgroup" />
+                <ScalarProperty Name="id_act" ColumnName="id_act" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages_files">
+            <EntityTypeMapping TypeName="SignalDBModel.messages_files">
+              <MappingFragment StoreEntitySet="messages_files">
+                <ScalarProperty Name="id_messages_files" ColumnName="id_messages_files" />
+                <ScalarProperty Name="id_message" ColumnName="id_message" />
+                <ScalarProperty Name="id_file" ColumnName="id_file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="SignalDBModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="last_acces_datex" ColumnName="last_acces_datex" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="profession" ColumnName="profession" />
+                <ScalarProperty Name="id_department" ColumnName="id_department" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users_acts">
+            <EntityTypeMapping TypeName="SignalDBModel.users_acts">
+              <MappingFragment StoreEntitySet="users_acts">
+                <ScalarProperty Name="id_user_act" ColumnName="id_user_act" />
+                <ScalarProperty Name="id_act" ColumnName="id_act" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users_workgroups">
+            <EntityTypeMapping TypeName="SignalDBModel.users_workgroups">
+              <MappingFragment StoreEntitySet="users_workgroups">
+                <ScalarProperty Name="id_users_workgroups" ColumnName="id_users_workgroups" />
+                <ScalarProperty Name="id_workgroup" ColumnName="id_workgroup" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workgroups">
+            <EntityTypeMapping TypeName="SignalDBModel.workgroups">
+              <MappingFragment StoreEntitySet="workgroups">
+                <ScalarProperty Name="id_workgroup" ColumnName="id_workgroup" />
+                <ScalarProperty Name="name_workgroup" ColumnName="name_workgroup" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
