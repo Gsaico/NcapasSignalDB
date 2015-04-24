@@ -8,7 +8,6 @@ namespace ServiciosWCF
     public partial class ServiceWCF_SignalDB : Servicios.users.IUsersService
     {
         LogicaDeNegocios.users.IUsersLogicaDeNegocios UsersLogicaNegocio = new LogicaDeNegocios.LogicaDeNegocios_SignalDB();
-
               
         public string InsertarUsers(Dominio.Dtos.usersDTO dto)
         {
@@ -16,9 +15,11 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.InsertarUsers(dto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
+               // throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);    
             }
         }
 
@@ -28,9 +29,9 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.ActualizarUsers (dto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
             }
         }
 
@@ -40,9 +41,9 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.EliminarUsers (id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
             }
         }
 
@@ -52,10 +53,10 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.BuscarUsers (id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
-            };
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
+            }
         }
 
         public List<Dominio.Dtos.usersDTO> ListarUsers(string param)
@@ -64,9 +65,9 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.ListarUsers (param);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
             }
         }
 
@@ -77,9 +78,9 @@ namespace ServiciosWCF
             {
                 return UsersLogicaNegocio.ListarTodosLosUsers();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new NotImplementedException();
+                throw ManejoErrores.Handlers.Handlers.ErrorServicios(ex);
             }
         }
     }

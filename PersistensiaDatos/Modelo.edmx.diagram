@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="SignalDBModel.messages_files" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SignalDBModel.users" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SignalDBModel.users_acts" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SignalDBModel.users_workgroups" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SignalDBModel.users_workgroups" Width="2.25" PointX="8.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SignalDBModel.workgroups" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="SignalDBModel.FK_acts_files_acts" ManuallyRouted="false" />
         <AssociationConnector Association="SignalDBModel.FK_agreements_acts" ManuallyRouted="false" />

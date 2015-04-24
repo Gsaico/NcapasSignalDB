@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio.Convertidores;
 using System.Data.Entity;
 //add
 using Dominio.Convertidores; 
@@ -70,7 +69,7 @@ namespace Dominio.Querys
         }
 
 
-        public List<Dtos.acts_filesDTO> BuscarActsfiles_IDACTS(int id)
+        public List<Dtos.acts_filesDTO> BuscarActsfiles_IDACT(int id)
         {
             try
             {
@@ -86,6 +85,24 @@ namespace Dominio.Querys
                 throw new NotImplementedException();
             }
         }
-       
+
+
+
+        public List<Dtos.acts_filesDTO> BuscarUsers_acts_IDUSER(int id)
+        {
+            try
+            {
+                using (var modelo = new PersistenciaDatos.SignalDBEntities())
+                {
+                    var entity = modelo.acts_files.Where(q => q.id_file == id).Select(q => q).ToList();
+                    if (entity == null) return null;
+                    return Dominio.Convertidores.acts_filesCONVERTIDOR.ToDTOs(entity);
+                }
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

@@ -69,8 +69,28 @@
     <Compile Include="ServiceWCF_SignalDB.svc.cs">
       <DependentUpon>ServiceWCF_SignalDB.svc</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\acts\ActsService.cs" />
+    <Compile Include="Servicios\acts\IActsService.cs" />
+    <Compile Include="Servicios\acts_files\Acts_filesService.cs" />
+    <Compile Include="Servicios\acts_files\IActs_filesService.cs" />
+    <Compile Include="Servicios\agreements\AgreementsService.cs" />
+    <Compile Include="Servicios\agreements\IAgreementsService.cs" />
+    <Compile Include="Servicios\departments\DepartmentsService.cs" />
+    <Compile Include="Servicios\departments\IDepartmentsService.cs" />
+    <Compile Include="Servicios\files\FilesService.cs" />
+    <Compile Include="Servicios\files\IFilesService.cs" />
+    <Compile Include="Servicios\messages\IMessagesService.cs" />
+    <Compile Include="Servicios\messages\MessagesService.cs" />
+    <Compile Include="Servicios\messages_files\IMessages_filesService.cs" />
+    <Compile Include="Servicios\messages_files\Messages_filesService.cs" />
     <Compile Include="Servicios\users\IUsersService.cs" />
     <Compile Include="Servicios\users\UsersService.cs" />
+    <Compile Include="Servicios\users_acts\IUsers_actsService.cs" />
+    <Compile Include="Servicios\users_acts\Users_actsService.cs" />
+    <Compile Include="Servicios\users_workgroups\IUsers_workgroupsService.cs" />
+    <Compile Include="Servicios\users_workgroups\Users_workgroupsService.cs" />
+    <Compile Include="Servicios\workgroups\IWorkgroupsService.cs" />
+    <Compile Include="Servicios\workgroups\WorkgroupsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -91,6 +111,10 @@
     <ProjectReference Include="..\LogicaDeNegocios\LogicaDeNegocios.csproj">
       <Project>{6d2c4030-fd1b-472c-b7a5-118e3e03682a}</Project>
       <Name>LogicaDeNegocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ManejoErrores\ManejoErrores.csproj">
+      <Project>{6c36c7d1-f390-4b1f-b9db-07a4dba878d6}</Project>
+      <Name>ManejoErrores</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

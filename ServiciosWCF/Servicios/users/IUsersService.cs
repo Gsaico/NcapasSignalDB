@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ServiciosWCF.Servicios.users
 {
     [ServiceContract]
-    public interface IUsersService
+    public  interface IUsersService
     {
         [OperationContract]
         string InsertarUsers(Dominio.Dtos.usersDTO dto);
